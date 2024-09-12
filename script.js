@@ -221,9 +221,9 @@ function fillFormWithData(column) {
     }
 
     // Pre-fill the limit checkbox and number if they exist
-    if (column.params.limit) {
+    if (column.params["length"]) {
         limitCheckbox.checked = true;
-        limitNumber.value = column.params.limit;
+        limitNumber.value = column.params.length;
         limitNumber.style.display = 'block';
     } else {
         limitCheckbox.checked = false;
