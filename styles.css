@@ -21,6 +21,17 @@ body {
     overflow-x: auto;
 }
 
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
 h1 {
     text-align: center;
     margin-bottom: 20px;
@@ -34,6 +45,7 @@ h1 {
 }
 
 .btn {
+    font-size: medium;
     background-color: #007bff;
     color: white;
     padding: 10px 20px;
@@ -205,7 +217,7 @@ textarea {
 #InEx {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
 }
 
 .conditional-field {
