@@ -1,4 +1,4 @@
-/* General styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -61,7 +61,15 @@ h1 {
 }
 
 .btn-export {
-    background-color: #ffc107;
+    background-color: #07ff13;
+}
+
+.btn-import {
+    background-color: #6b6b6b;
+}
+
+#N {
+    width: 130px;
 }
 
 /* Column display */
@@ -185,6 +193,19 @@ textarea {
 #numericParams, #booleanParams, #CategoryParams {
     margin: 10px;
     
+}
+
+#Ninput {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-direction:row;
+}
+
+#InEx {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .conditional-field {

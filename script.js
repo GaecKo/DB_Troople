@@ -23,10 +23,10 @@ class Column {
 
         // liste 
         if ("length" in this.params) {
-            console.log(this.params[length])
+            console.log(this.params["length"]);
             elem["liste"] = {
                 "isList": true,
-                "n_element": this.params[length]
+                "n_element": this.params["length"]
             }
         } else {
             elem["liste"] = {
@@ -75,6 +75,42 @@ class Database {
 
         return JSON.stringify(res, null, 4);
     }
+
+    importFromJson(jsonData) {
+        jsonData = JSON.parse(jsonData);  
+
+        this.columns = [];
+        N.value = jsonData["N"];
+
+        jsonData["variables"].forEach((elem) => {
+            var params = {};
+            var name = elem["name"];
+            var type = elem["type"];
+            var des = elem["description"];
+            
+            if (elem["liste"]["isList"]) {
+                params["length"] = elem["liste"]["n_element"];
+            }
+
+            if ("interval" in elem) {
+                params["interval"] = elem["interval"];
+                params["mean"] = elem["distribution"]["moyenne"];
+                params["variance"] = elem["distribution"]["variance"];
+            }
+
+            if ("values" in elem) {
+                params["values"] = elem["values"];
+            }
+
+            if ("percentage_true" in elem) {
+                params["falsePercentage"] = 100 - elem["percentage_true"];
+                params["truePercentage"] = elem["percentage_true"];
+            }
+
+            this.columns.push(new Column(name, type, des, params))
+        });
+
+    }
 }
 
 const db = new Database();
@@ -90,6 +126,7 @@ const addCategoryValueBtn = document.getElementById('addCategoryValueBtn');
 const categoryValuesList = document.getElementById('categoryValuesList');
 const addColumnBtn = document.getElementById('addColumnBtn');
 const exportBtn = document.getElementById('exportBtn');
+const importBtn = document.getElementById('importJson')
 let editIndex = null;
 const N = document.getElementById('N');
 
@@ -320,7 +357,8 @@ function renderColumns() {
             <h3>${column.name}</h3>
             <p><strong>Type:</strong> ${column.type}</p>
             <p><strong>Description:</strong> ${column.description}</p>
-            <p><strong>Parameters:</strong> ${JSON.stringify(column.params)}</p>
+            <p><strong>Parameters:</strong></p>
+            <p> ${JSON.stringify(column.params, null, "\t")} </p>
             <div class="buttons">
                 <button class="edit">Edit</button>
                 <button class="delete">Delete</button>
@@ -351,4 +389,16 @@ exportBtn.onclick = function() {
     a.download = 'database.json';
     a.click();
     URL.revokeObjectURL(url);
+};
+
+// Handle import JSON
+importBtn.onchange = function(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const json = e.target.result;
+        db.importFromJson(json);
+        renderColumns();
+    };
+    reader.readAsText(file);
 };

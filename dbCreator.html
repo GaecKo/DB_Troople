@@ -11,11 +11,16 @@
         <h1>Database Creator</h1>
         <div class="controls">
             <button id="addColumnBtn" class="btn">Add Column</button>
-            <div>
+            <div id="Ninput"> 
                 <label for="N">N:</label>
                 <input id="N" type="number" min="1">
             </div>
-            <button id="exportBtn" class="btn btn-export">Export JSON</button>
+            <div id="InEx">
+                <!-- <button id="importJson" class="btn btn-import">Import JSON</button> -->
+                <input type="file" id="importJson" accept="application/json" />
+                <button id="exportBtn" class="btn btn-export">Export JSON</button>
+            </div>
+            
         </div>
         <div id="columnsContainer"></div>
     </div>
