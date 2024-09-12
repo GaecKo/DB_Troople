@@ -1,3 +1,4 @@
+/* General styles */
 * {
     margin: 0;
     padding: 0;
@@ -17,7 +18,7 @@ body {
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-x: auto;
 }
 
 h1 {
@@ -25,12 +26,45 @@ h1 {
     margin-bottom: 20px;
 }
 
+/* Control buttons */
 .controls {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
 }
 
+.btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.btn-small {
+    background-color: #6c757d;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-save {
+    background-color: #28a745;
+}
+
+.btn-export {
+    background-color: #ffc107;
+}
+
+/* Column display */
 #columnsContainer {
     display: flex;
     flex-direction: row;
@@ -40,7 +74,7 @@ h1 {
 }
 
 .column-item {
-    min-width: 200px;
+    min-width: 250px;
     background: #e9e9e9;
     border-radius: 5px;
     padding: 10px;
@@ -48,10 +82,15 @@ h1 {
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .column-item h3 {
     margin-bottom: 10px;
+}
+
+.column-item p {
+    margin-bottom: 5px;
 }
 
 .column-item .buttons {
@@ -76,6 +115,7 @@ h1 {
     background: #dc3545;
 }
 
+/* Modal styles */
 .modal {
     display: none;
     position: fixed;
@@ -95,7 +135,7 @@ h1 {
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    max-width: 500px;
+    max-width: 600px;
     border-radius: 10px;
     position: relative;
 }
@@ -129,27 +169,60 @@ label {
 
 input[type="text"],
 select,
-textarea {
+textarea,
+input[type="number"] {
     padding: 8px;
     margin-top: 5px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    width: 100%;
 }
 
 textarea {
     resize: vertical;
 }
 
-button[type="submit"] {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+#numericParams, #booleanParams, #CategoryParams {
+    margin: 10px;
+    
 }
 
-button[type="submit"]:hover {
-    background-color: #0056b3;
+.conditional-field {
+    margin-top: 10px;
+    display: none;
+}
+
+/* Category value list */
+#categoryValuesContainer {
+    display: flex;
+    align-items: center;
+}
+
+#categoryValuesList {
+    margin-top: 10px;
+}
+
+#categoryValuesList div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+#categoryValuesList div input {
+    margin-right: 10px;
+}
+
+/* Additional params */
+#additionalParams {
+    margin-top: 10px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+    .modal-content {
+        width: 90%;
+    }
 }

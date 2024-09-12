@@ -10,11 +10,14 @@
     <div class="container">
         <h1>Database Creator</h1>
         <div class="controls">
-            <button id="addColumnBtn">Add Column</button>
-            <button id="exportBtn">Export JSON</button>
-            <input type="file" id="importJson" accept="application/json" />
+            <button id="addColumnBtn" class="btn">Add Column</button>
+            <div>
+                <label for="N">N:</label>
+                <input id="N" type="number" min="1">
+            </div>
+            <button id="exportBtn" class="btn btn-export">Export JSON</button>
         </div>
-        <div id="columnsContainer" class="horizontal-scroll"></div>
+        <div id="columnsContainer"></div>
     </div>
 
     <!-- Modal -->
@@ -29,16 +32,55 @@
                 <label for="columnType">Column Type:</label>
                 <select id="columnType">
                     <option value="string">String</option>
-                    <option value="number">Number</option>
+                    <option value="float">Float</option>
+                    <option value="int">Int</option>
+                    <option value="category">Category</option>
                     <option value="boolean">Boolean</option>
-                    <option value="date">Date</option>
                 </select>
+
+                <!-- Float/Int specific parameters -->
+                <div id="numericParams" class="conditional-field">
+                    <label for="interval">Interval:</label>
+                    <input type="text" id="interval" placeholder="e.g., 0-100">
+                    <br>
+                    <label for="mean">Mean:</label>
+                    <input type="number" id="mean" step="any">
+                    <br>
+                    <label for="variance">Variance:</label>
+                    <input type="number" id="variance" step="any">
+                </div>
+
+                <!-- Category specific parameters -->
+                <div id="categoryParams" class="conditional-field">
+                    <div id="categoryValuesContainer">
+                        <label>Category Values:</label>
+                        <button type="button" id="addCategoryValueBtn" class="btn-small">Add Value</button>
+                    </div>
+                    <div id="categoryValuesList"></div>
+                </div>
+
+                <!-- Boolean specific parameters -->
+                <div id="booleanParams" class="conditional-field">
+                    <label for="truePercentage">True Percentage:</label>
+                    <input type="number" id="truePercentage" placeholder="e.g., 50" min="0" max="100">
+                </div>
 
                 <label for="columnDescription">Description:</label>
                 <textarea id="columnDescription"></textarea>
 
+                <!-- Limit option -->
+                <br> 
+                <div id="additionalParams">
+                    <label for="limitCheckbox">
+                        <input type="checkbox" id="limitCheckbox">
+                        List 
+                    </label>
+                    <input type="number" id="limitNumber" placeholder="# elements" min="1" style="display: none;">
+                </div>
+
                 <input type="hidden" id="columnIndex">
-                <button type="submit">Save Column</button>
+                <br>
+                <button type="submit" class="btn btn-save">Save Column</button>
             </form>
         </div>
     </div>
