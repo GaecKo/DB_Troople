@@ -35,9 +35,10 @@ class Column {
             };
         }
 
+        // category
         if (this.type == "category") {
             elem["values"] = this.params["values"];
-        } else if (this.type == "boolean") {
+        } else if (this.type == "boolean") { // boolean
             elem["percentage_true"] = this.params["truePercentage"];
         }
 
@@ -119,14 +120,19 @@ const columnsContainer = document.getElementById('columnsContainer');
 const columnModal = document.getElementById('columnModal');
 const columnForm = document.getElementById('columnForm');
 const columnType = document.getElementById('columnType');
+
 const numericParams = document.getElementById('numericParams');
 const categoryParams = document.getElementById('categoryParams');
 const booleanParams = document.getElementById('booleanParams');
+
 const addCategoryValueBtn = document.getElementById('addCategoryValueBtn');
+
 const categoryValuesList = document.getElementById('categoryValuesList');
+
 const addColumnBtn = document.getElementById('addColumnBtn');
 const exportBtn = document.getElementById('exportBtn');
-const importBtn = document.getElementById('importJson')
+const importBtn = document.getElementById('importJson');
+
 let editIndex = null;
 const N = document.getElementById('N');
 

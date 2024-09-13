@@ -1,0 +1,89 @@
+{
+    "N": "100",
+    "variables": [
+        {
+            "name": "temperature",
+            "type": "float",
+            "description": "Température en degrés Celsius",
+            "interval": "15-35",
+            "distribution": {
+                "moyenne": 25,
+                "variance": 2.5
+            },
+            "liste": {
+                "isList": false,
+                "n_element": null
+            }
+        },
+        {
+            "name": "age",
+            "type": "int",
+            "description": "Âge des individus en années",
+            "interval": "0-100",
+            "distribution": {
+                "moyenne": 35,
+                "variance": 15
+            },
+            "liste": {
+                "isList": false,
+                "n_element": null
+            }
+        },
+        {
+            "name": "nom_utilisateur",
+            "type": "string",
+            "description": "Nom de l'utilisateur",
+            "liste": {
+                "isList": false,
+                "n_element": null
+            }
+        },
+        {
+            "name": "type_de_compte",
+            "type": "category",
+            "description": "Type de compte utilisateur",
+            "liste": {
+                "isList": false,
+                "n_element": null
+            },
+            "values": [
+                {
+                    "value": "gratuit",
+                    "percentage": 70
+                },
+                {
+                    "value": "premium",
+                    "percentage": 20
+                },
+                {
+                    "value": "entreprise",
+                    "percentage": 10
+                }
+            ]
+        },
+        {
+            "name": "abonnement_actif",
+            "type": "boolean",
+            "description": "Indique si l'abonnement est actif",
+            "liste": {
+                "isList": false,
+                "n_element": null
+            },
+            "percentage_true": 70
+        },
+        {
+            "name": "historique_achats",
+            "type": "int",
+            "description": "Nombre d'achats réalisés par l'utilisateur",
+            "interval": "0-50",
+            "distribution": {
+                "moyenne": 10,
+                "variance": 5
+            },
+            "liste": {
+                "isList": true,
+                "n_element": 10
+            }
+        }
+    ]
+}
